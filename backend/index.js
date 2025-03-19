@@ -22,7 +22,17 @@ app.get("/", (req, res) => {
   res.send("hello rutuja kamble");
 });
 
-app.listen(port, async () => {
-  await dbConnection();
-  console.log(`app running on port http://localhost:${port}/`);
-});
+//start server function
+async function startServer() {
+  try {
+    await dbConnection();
+    app.listen(port, () => {
+      console.log(`App running on http://localhost:${port}/`);
+    });
+  } catch (error) {
+    console.error("Database connection failed:", error.message);
+    process.exit(1);
+  }
+}
+
+startServer();

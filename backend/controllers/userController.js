@@ -155,7 +155,7 @@ exports.updateData = async (req, res) => {
     }
 
     //update user data
-    const updatedUser = await user.findByIdAndUpdate(id, updatedPayload, {
+    const updatedUser = await User.findByIdAndUpdate(id, updatedPayload, {
       new: true,
     });
 
